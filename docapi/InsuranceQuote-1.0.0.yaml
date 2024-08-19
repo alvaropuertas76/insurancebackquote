@@ -1,0 +1,70 @@
+openapi: 3.0.0
+info:
+  title: Triatlhon Policy API to calculate Quote
+  description: Triatlhon Policy API to calculate Quote
+  contact:
+    email: alvaropuertas76@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://virtserver.swaggerhub.com/ALVAROPUERTAS76/InsuranceQuote/1.0.0
+    description: SwaggerHub API Auto Mocking
+  - url: https://virtserver.swaggerhub.com/ALVAROPUERTAS76/InsuranceIntegration/1.0.0
+    description: SwaggerHub API Auto Mocking
+tags:
+  - name: Triatlhon Quote
+    description: Operations available to developers
+paths:
+  /quote:
+    get:
+      tags:
+        - Triatlhon Policy Product
+      summary: get quote
+      description: |
+        get the quote for triatlhon product
+      operationId: getQuote
+      parameters:
+        - name: eventId
+          in: query
+          description: Id of the event
+          required: true
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: bikeId
+          in: query
+          description: Id of the bike
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: wetsuitId
+          in: query
+          description: Id of the wetsuit
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+        - name: helmetId
+          in: query
+          description: Id of the bike
+          required: false
+          style: form
+          explode: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: search results matching criteria
+          content:
+            application/json:
+              schema:
+                type: string
+        "400":
+          description: bad input parameter
+components: {}

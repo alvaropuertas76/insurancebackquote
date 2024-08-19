@@ -1,0 +1,18 @@
+management:
+  endpoint:
+    shutdown:
+      enabled: true
+    info:
+      enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    enabled-by-default: true
+
+spring:
+  application:
+    name: quote
+
+server:
+  port: 8082
