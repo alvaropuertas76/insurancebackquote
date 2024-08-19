@@ -5,6 +5,7 @@ import org.zurich.api.TriatlhonPolicyProductApi;
 import org.zurich.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
+import org.json.JSONObject;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -36,13 +37,18 @@ public class TriathlonPolicyProductController implements TriatlhonPolicyProductA
     public ResponseEntity<String> getQuote(String eventId, String bikeId, String wetsuitId, String helmetId) {
         double totalMarketValue = 0d;
         double quote = 0d;
-        String response = "Thanks for choosing Zurich Insurance." + NEWLINE;
+
+        JSONObject jsonObject = new JSONObject();
+        String response = "Thanks for choosing Zurich Insurance. ";
+        jsonObject.put("title", response);
 
         if (eventId != null) {
             String llamada_event = CALL_MASTER_DATA_EVENT + "?id=" + eventId;
             Event[] event = restTemplate.getForObject(llamada_event, Event[].class);
             Event eventSelected = event[0];
             response += " We hope to enjoy next " + eventSelected.getName() + " in " + eventSelected.getCity() + NEWLINE;
+            jsonObject.put("event_name", eventSelected.getName());
+            jsonObject.put("event_city", eventSelected.getCity());
 
             if (bikeId != null) {
                 String llamada_bike = CALL_MASTER_DATA_BIKE + "?id=" + bikeId;
@@ -51,6 +57,7 @@ public class TriathlonPolicyProductController implements TriatlhonPolicyProductA
                 totalMarketValue += bikeSelected.getMarketValue().doubleValue();
 
                 double quotebike = bikeSelected.getMarketValue().doubleValue() * 0.05;
+                jsonObject.put("currency", bikeSelected.getCurrency());
                 String[] location = eventSelected.getLocation().split("&");
                 String lat = location[0].split("=")[1];
                 String lon = location[1].split("=")[1];
@@ -63,6 +70,7 @@ public class TriathlonPolicyProductController implements TriatlhonPolicyProductA
                 if (maxProbability > RAINY_RISK) {
                     quotebike = quotebike * 1.5d;
                     response += " Be carefull in ride segment because the probability to rain is high."  + NEWLINE;
+                    jsonObject.put("probability_rain", maxProbability);
                 }
                 quote += quotebike;
             }
@@ -92,10 +100,14 @@ public class TriathlonPolicyProductController implements TriatlhonPolicyProductA
             response += "the market value of all your gear to do the Ironman is " + totalMarketValue + NEWLINE;
             response += "THE QUOTE PRICE FOR ALL THE GEAR SELECTED IS : " + quote + " EUR.";
 
+            jsonObject.put("total_market_value", totalMarketValue);
+            jsonObject.put("quote", quote);
+
         }
         // return the information about the products inside the policy for
         // the event selected, with the cost of all of them and the quote
         // for the policy.
-        return ResponseEntity.ok(response);
+        return ResponseEntity.ok(jsonObject.toString());
+        //return ResponseEntity.ok(response);
     }
 }
