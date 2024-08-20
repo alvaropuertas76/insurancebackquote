@@ -54,9 +54,9 @@ public class TriathlonPolicyProductController implements TriatlhonPolicyProductA
                 String llamada_bike = CALL_MASTER_DATA_BIKE + "?id=" + bikeId;
                 Bike[] bike = restTemplate.getForObject(llamada_bike, Bike[].class);
                 Bike bikeSelected = bike[0];
-                totalMarketValue += bikeSelected.getMarketValue().doubleValue();
+                totalMarketValue += bikeSelected.getMarketValue();
 
-                double quotebike = bikeSelected.getMarketValue().doubleValue() * 0.05;
+                double quotebike = bikeSelected.getMarketValue() * 0.05;
                 jsonObject.put("currency", bikeSelected.getCurrency());
                 String[] location = eventSelected.getLocation().split("&");
                 String lat = location[0].split("=")[1];
@@ -79,8 +79,8 @@ public class TriathlonPolicyProductController implements TriatlhonPolicyProductA
                 String llamada_wetsuit = CALL_MASTER_DATA_WETSUIT + "?id=" + wetsuitId;
                 Wetsuit[] wetsuit = restTemplate.getForObject(llamada_wetsuit, Wetsuit[].class);
                 Wetsuit wetsuitSelected = wetsuit[0];
-                totalMarketValue += wetsuitSelected.getMarketValue().doubleValue();
-                double quotewetsuit = wetsuitSelected.getMarketValue().doubleValue() * 0.05;
+                totalMarketValue += wetsuitSelected.getMarketValue();
+                double quotewetsuit = wetsuitSelected.getMarketValue() * 0.05;
                 quote += quotewetsuit;
             }
 
@@ -88,8 +88,8 @@ public class TriathlonPolicyProductController implements TriatlhonPolicyProductA
                 String llamada_helmet = CALL_MASTER_DATA_HELMET + "?id=" + helmetId;
                 Helmet[] helmet = restTemplate.getForObject(llamada_helmet, Helmet[].class);
                 Helmet helmetSelected = helmet[0];
-                totalMarketValue += helmetSelected.getMarketValue().doubleValue();
-                double quotehelmet = helmetSelected.getMarketValue().doubleValue() * 0.05;
+                totalMarketValue += helmetSelected.getMarketValue();
+                double quotehelmet = helmetSelected.getMarketValue() * 0.05;
                 quote += quotehelmet;
             }
 
