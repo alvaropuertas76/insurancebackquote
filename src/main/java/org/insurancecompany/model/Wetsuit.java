@@ -1,4 +1,4 @@
-package org.zurich.model;
+package org.insurancecompany.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.annotation.Generated;
@@ -6,11 +6,11 @@ import jakarta.annotation.Generated;
 import java.util.Objects;
 
 /**
- * Bike
+ * Wetsuit
  */
 
 @Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2024-08-18T19:53:26.451617500+02:00[Europe/Madrid]", comments = "Generator version: 7.4.0")
-public class Bike {
+public class Wetsuit {
 
   private String id;
 
@@ -28,7 +28,7 @@ public class Bike {
 
   private String urLImage;
 
-  public Bike id(String id) {
+  public Wetsuit id(String id) {
     this.id = id;
     return this;
   }
@@ -47,7 +47,7 @@ public class Bike {
     this.id = id;
   }
 
-  public Bike brand(String brand) {
+  public Wetsuit brand(String brand) {
     this.brand = brand;
     return this;
   }
@@ -66,7 +66,7 @@ public class Bike {
     this.brand = brand;
   }
 
-  public Bike model(String model) {
+  public Wetsuit model(String model) {
     this.model = model;
     return this;
   }
@@ -85,7 +85,7 @@ public class Bike {
     this.model = model;
   }
 
-  public Bike year(String year) {
+  public Wetsuit year(String year) {
     this.year = year;
     return this;
   }
@@ -104,7 +104,7 @@ public class Bike {
     this.year = year;
   }
 
-  public Bike marketValue(Double marketValue) {
+  public Wetsuit marketValue(Double marketValue) {
     this.marketValue = marketValue;
     return this;
   }
@@ -123,7 +123,7 @@ public class Bike {
     this.marketValue = marketValue;
   }
 
-  public Bike currency(String currency) {
+  public Wetsuit currency(String currency) {
     this.currency = currency;
     return this;
   }
@@ -142,7 +142,7 @@ public class Bike {
     this.currency = currency;
   }
 
-  public Bike description(String description) {
+  public Wetsuit description(String description) {
     this.description = description;
     return this;
   }
@@ -161,7 +161,7 @@ public class Bike {
     this.description = description;
   }
 
-  public Bike urLImage(String urLImage) {
+  public Wetsuit urLImage(String urLImage) {
     this.urLImage = urLImage;
     return this;
   }
@@ -188,15 +188,15 @@ public class Bike {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Bike bike = (Bike) o;
-    return Objects.equals(this.id, bike.id) &&
-        Objects.equals(this.brand, bike.brand) &&
-        Objects.equals(this.model, bike.model) &&
-        Objects.equals(this.year, bike.year) &&
-        Objects.equals(this.marketValue, bike.marketValue) &&
-        Objects.equals(this.currency, bike.currency) &&
-        Objects.equals(this.description, bike.description) &&
-        Objects.equals(this.urLImage, bike.urLImage);
+    Wetsuit wetsuit = (Wetsuit) o;
+    return Objects.equals(this.id, wetsuit.id) &&
+        Objects.equals(this.brand, wetsuit.brand) &&
+        Objects.equals(this.model, wetsuit.model) &&
+        Objects.equals(this.year, wetsuit.year) &&
+        Objects.equals(this.marketValue, wetsuit.marketValue) &&
+        Objects.equals(this.currency, wetsuit.currency) &&
+        Objects.equals(this.description, wetsuit.description) &&
+        Objects.equals(this.urLImage, wetsuit.urLImage);
   }
 
   @Override
@@ -207,7 +207,7 @@ public class Bike {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Bike {\n");
+    sb.append("class Wetsuit {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    brand: ").append(toIndentedString(brand)).append("\n");
     sb.append("    model: ").append(toIndentedString(model)).append("\n");

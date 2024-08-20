@@ -1,8 +1,8 @@
-package org.zurich.controller;
+package org.insurancecompany.controller;
 
 import org.springframework.web.client.RestTemplate;
-import org.zurich.api.TriatlhonPolicyProductApi;
-import org.zurich.model.*;
+import org.insurancecompany.api.TriatlhonPolicyProductApi;
+import org.insurancecompany.model.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import org.json.JSONObject;
